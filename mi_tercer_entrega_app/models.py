@@ -33,3 +33,14 @@ class Estudiante(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+
+class Disco(models.Model):
+    banda = models.CharField(max_length=100)
+    titulo = models.CharField(max_length=100)
+    genero = models.CharField(max_length=100)
+    anio = models.IntegerField()
+    precio=models.FloatField()
+
+    def __str__(self):
+        return f"{self.banda} {self.titulo}"

@@ -17,3 +17,10 @@ class EstudianteForm(forms.Form):
     edad = forms.IntegerField(min_value=10, max_value=100)
     fecha_inscripcion = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'}))
+
+class DiscoForm(forms.Form):
+    banda = forms.CharField(label="Banda", max_length=100)
+    titulo = forms.CharField(label="Titulo", max_length=100)
+    genero = forms.CharField(label="Genero", max_length=100)
+    anio = forms.IntegerField(min_value=1950, max_value=3000)
+    precio = forms.FloatField()

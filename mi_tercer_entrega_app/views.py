@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from .models import Familiar, Curso, Estudiante
+from .models import Familiar, Curso, Estudiante,Disco
 
-from .forms import CursoForm, EstudianteForm
+from .forms import CursoForm, EstudianteForm,DiscoForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -84,3 +84,21 @@ def buscar_cursos(request):
         nombre = request.GET.get('nombre', '')
         cursos = Curso.objects.filter(nombre__icontains=nombre)
         return render(request, 'mi_tercer_entrega_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+    
+def crear_disco(request):
+    if request.method == 'POST':
+        form = DiscoForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar el curso
+            nuevo_disco = Disco(
+                banda=form.cleaned_data['banda'],
+                titulo=form.cleaned_data['titulo'],
+                genero=form.cleaned_data['genero'],
+                anio=form.cleaned_data['anio'],
+                precio=form.cleaned_data['precio']
+            )
+            nuevo_disco.save()
+            return redirect('inicio')
+    else:
+        form = DiscoForm()
+        return render(request, 'mi_tercer_entrega_app/crear_disco.html', {'form': form})
