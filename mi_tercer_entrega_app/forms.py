@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import Auto
 
 class CursoForm(forms.Form):
     nombre = forms.CharField()
@@ -24,3 +24,8 @@ class DiscoForm(forms.Form):
     genero = forms.CharField(label="Genero", max_length=100)
     anio = forms.IntegerField(min_value=1950, max_value=3000)
     precio = forms.FloatField()
+
+class AutoForm(forms.ModelForm):
+    class Meta:
+        model = Auto
+        fields = ['modelo', 'marca', 'descripcion']
