@@ -1,0 +1,19 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h2>Lista de Recitales</h2>
+
+<ul>
+    {% for nombre in Recitales %}
+        <li>
+         {{ auto.modelo }}
+        <a href="{% url 'detalle-recital' nombre.pk %}">Ver Detalle</a>
+        <a href="{% url 'editar-recital' nombre.pk %}">Editar</a>
+        <a href="{% url 'eliminar-recital' nombre.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay recitales disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

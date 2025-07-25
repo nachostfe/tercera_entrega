@@ -52,3 +52,23 @@ class Auto(models.Model):
 
     def __str__(self):
         return f'{self.marca} {self.modelo}'
+
+
+class Recital(models.Model):
+    banda = models.CharField(max_length=50)
+    lugar = models.CharField(max_length=50)
+    ciudad = models.CharField(max_length=50)
+    precio = models.FloatField()
+
+    def __str__(self):
+        return f'{self.banda} {self.fecha}'
+    
+class Banda(models.Model):
+    nombre = models.CharField(max_length=50)
+    aniodeformacion = models.CharField(max_length=4)
+    pais = models.CharField(max_length=50)
+    historia = models.TextField(null=True, blank=True)
+    genero = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return f'{self.nombre} {self.aniodeformacion}'

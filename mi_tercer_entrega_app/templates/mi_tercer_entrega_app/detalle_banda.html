@@ -1,0 +1,12 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h1>Detalles de la Banda</h1>
+<p><strong>Nombre:</strong> {{ object.nombre }}</p>
+<p><strong>Genero:</strong> {{ object.genero }}</p>
+<p><strong>Historia:</strong> {{ object.historia }}</p>
+
+<a href="{% url 'listar-bandas' %}">Volver</a>
+
+{% endblock %}

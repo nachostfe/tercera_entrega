@@ -1,5 +1,5 @@
 from django import forms
-from .models import Auto
+from .models import Auto,Recital,Banda
 
 class CursoForm(forms.Form):
     nombre = forms.CharField()
@@ -29,3 +29,13 @@ class AutoForm(forms.ModelForm):
     class Meta:
         model = Auto
         fields = ['modelo', 'marca', 'descripcion']
+        
+class BandasForm(forms.ModelForm):
+    class Meta:
+        model = Banda
+        fields = ['nombre','aniodeformacion','pais','genero','historia','genero']
+        
+class RecitalesForm(forms.ModelForm):
+    class Meta:
+        model = Recital
+        fields = ['banda','lugar','ciudad','precio']

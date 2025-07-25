@@ -1,0 +1,19 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h2>Lista de Bandas</h2>
+
+<ul>
+    {% for banda in bandas %}
+        <li>
+         {{ banda.nombre }}
+        <a href="{% url 'detalle-banda' banda.pk %}">Ver Detalle</a>
+        <a href="{% url 'editar-banda' banda.pk %}">Editar</a>
+        <a href="{% url 'eliminar-banda' banda.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay bandas disponibles.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

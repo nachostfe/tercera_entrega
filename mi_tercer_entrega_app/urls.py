@@ -1,7 +1,9 @@
+
 from django.urls import path
 
 from .views import (saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, 
-                    buscar_cursos, cursos, crear_disco,
+                    buscar_cursos, cursos, crear_disco,RecitalesCreateView,
+                    BandasCreateView,BandasDetailView,BandasDeleteView,BandasUpdateView,BandasListView,
                     AutoCreateView, AutoListView, AutoDeleteView, AutoDetailView, AutoUpdateView)
 urlpatterns = [
     path('', inicio, name='inicio'),
@@ -17,7 +19,15 @@ urlpatterns = [
      # urls con vistas basadas en clase
     path('listar-autos/', AutoListView.as_view(), name='listar-autos'),
     path('crear-auto/', AutoCreateView.as_view(), name='crear-auto'),
-    path('detalle-auto/<int:pk>', AutoDetailView.as_view(), name='detalle-auto'),
-    path('editar/<int:pk>/', AutoUpdateView.as_view(), name='editar-auto'),
+    #path('editar/<int:pk>/', AutoUpdateView.as_view(), name='editar-auto'),
     path('eliminar/<int:pk>/', AutoDeleteView.as_view(), name='eliminar-auto'),
+    path('detalle-auto/<int:pk>', AutoDetailView.as_view(), name='detalle-auto'),
+    
+    path('crear-recitales/', RecitalesCreateView.as_view(), name='crear-recitales'),
+    
+    path('crear-bandas/', BandasCreateView.as_view(), name='crear-bandas'),
+    path('detalle-banda/<int:pk>', BandasDetailView.as_view(), name='detalle-banda'),
+    path('eliminar-banda/<int:pk>/', BandasDeleteView.as_view(), name='eliminar-banda'),
+    path('editar/<int:pk>/', BandasUpdateView.as_view(), name='editar-banda'),
+    path('listar-bandas/', BandasListView.as_view(), name='listar-bandas'),
 ]

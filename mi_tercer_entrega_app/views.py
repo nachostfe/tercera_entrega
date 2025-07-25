@@ -3,9 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 
-from .models import Familiar, Curso, Estudiante,Disco, Auto
+from .models import Familiar, Curso, Estudiante,Disco, Auto,Banda,Recital
 
-from .forms import CursoForm, EstudianteForm,DiscoForm, AutoForm
+from .forms import CursoForm, EstudianteForm,DiscoForm, AutoForm,BandasForm,RecitalesForm
 
 from django.contrib.auth.decorators import login_required
 
@@ -138,3 +138,46 @@ class AutoDeleteView(DeleteView):
     model = Auto
     template_name = 'mi_tercer_entrega_app/eliminar_auto.html'
     success_url = reverse_lazy('listar-autos')
+
+class RecitalesCreateView(CreateView):
+    model = Recital
+    form_class = RecitalesForm
+    template_name = 'mi_tercer_entrega_app/crear-recitales.html'
+    success_url = reverse_lazy('listar-recitales')
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+class BandasCreateView(CreateView):
+    model = Banda
+    form_class = BandasForm
+    template_name = 'mi_tercer_entrega_app/crear-bandas.html'
+    success_url = reverse_lazy('listar-bandas')
+    
+class BandasUpdateView(UpdateView):
+    model = Banda
+    form_class = BandasForm
+    template_name = 'mi_tercer_entrega_app/crear-bandas.html'
+    success_url = reverse_lazy('listar-bandas')
+    
+class BandasDeleteView(DeleteView):
+    model = Banda
+    template_name = 'mi_tercer_entrega_app/eliminar-banda.html'
+    success_url = reverse_lazy('listar-bandas')
+    
+class BandasListView(ListView):
+    model = Banda
+    template_name = 'mi_tercer_entrega_app/listar-bandas.html'
+    context_object_name = 'bandas'
+    
+class BandasDetailView(DetailView):
+    model = Banda
+    template_name = 'mi_tercer_entrega_app/detalle_banda.html'
+    context_object_name = 'bandas'
+
