@@ -2,7 +2,7 @@
 from django.urls import path
 
 from .views import (saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, 
-                    buscar_cursos, cursos, crear_disco,RecitalesCreateView,
+                    buscar_cursos,lista_discos,acercade,buscar_discos, cursos, crear_disco,RecitalesCreateView,
                     BandasCreateView,BandasDetailView,BandasDeleteView,BandasUpdateView,BandasListView,
                     AutoCreateView, AutoListView, AutoDeleteView, AutoDetailView, AutoUpdateView)
 urlpatterns = [
@@ -23,6 +23,10 @@ urlpatterns = [
     path('eliminar/<int:pk>/', AutoDeleteView.as_view(), name='eliminar-auto'),
     path('detalle-auto/<int:pk>', AutoDetailView.as_view(), name='detalle-auto'),
     
+    
+    path('discos/', lista_discos, name='lista_discos'),
+    path('discos/buscar/', buscar_discos, name='buscar_discos'),
+    path('acerca-de/', acercade, name='acercade'),
     path('crear-recitales/', RecitalesCreateView.as_view(), name='crear-recitales'),
     
     path('crear-bandas/', BandasCreateView.as_view(), name='crear-bandas'),

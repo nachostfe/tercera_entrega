@@ -57,6 +57,18 @@ def crear_curso(request):
     else:
         form = CursoForm()
         return render(request, 'mi_tercer_entrega_app/crear_curso.html', {'form': form})
+    
+    
+def cursos(request):
+    cursos = Curso.objects.all()
+    return render(request, 'mi_tercer_entrega_app/cursos.html', {'cursos': cursos})
+
+
+def buscar_cursos(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', '')
+        cursos = Curso.objects.filter(nombre__icontains=nombre)
+        return render(request, 'mi_tercer_entrega_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
 
 
 def crear_estudiante(request):
@@ -79,35 +91,6 @@ def crear_estudiante(request):
         return render(request, 'mi_tercer_entrega_app/crear_estudiante.html', {'form': form})
 
 
-def cursos(request):
-    cursos = Curso.objects.all()
-    return render(request, 'mi_tercer_entrega_app/cursos.html', {'cursos': cursos})
-
-
-def buscar_cursos(request):
-    if request.method == 'GET':
-        nombre = request.GET.get('nombre', '')
-        cursos = Curso.objects.filter(nombre__icontains=nombre)
-        return render(request, 'mi_tercer_entrega_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
-    
-def crear_disco(request):
-    if request.method == 'POST':
-        form = DiscoForm(request.POST)
-        if form.is_valid():
-            # Procesar el formulario y guardar el curso
-            nuevo_disco = Disco(
-                banda=form.cleaned_data['banda'],
-                titulo=form.cleaned_data['titulo'],
-                genero=form.cleaned_data['genero'],
-                anio=form.cleaned_data['anio'],
-                precio=form.cleaned_data['precio']
-            )
-            nuevo_disco.save()
-            return redirect('inicio')
-    else:
-        form = DiscoForm()
-        return render(request, 'mi_tercer_entrega_app/crear_disco.html', {'form': form})
-    
 class AutoListView(ListView):
     model = Auto
     template_name = 'mi_tercer_entrega_app/listar_autos.html'
@@ -147,13 +130,38 @@ class RecitalesCreateView(CreateView):
  
  
  
+@login_required
+def crear_disco(request):
+    if request.method == 'POST':
+        form = DiscoForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar el curso
+            nuevo_disco = Disco(
+                banda=form.cleaned_data['banda'],
+                titulo=form.cleaned_data['titulo'],
+                genero=form.cleaned_data['genero'],
+                anio=form.cleaned_data['anio'],
+                precio=form.cleaned_data['precio']
+            )
+            nuevo_disco.save()
+            return redirect('inicio')
+    else:
+        form = DiscoForm()
+        return render(request, 'mi_tercer_entrega_app/crear_disco.html', {'form': form})
+
+def lista_discos(request):
+    discos = Disco.objects.all()
+    return render(request, 'mi_tercer_entrega_app/lista_discos.html', {'discos': discos})
+
+def buscar_discos(request):
+    if request.method == 'GET':
+        titulo = request.GET.get('titulo', '')
+        discos = Disco.objects.filter(titulo__icontains=titulo)
+        return render(request, 'mi_tercer_entrega_app/lista_discos.html', {'discos': discos, 'titulo': titulo})
  
  
  
  
- 
- 
-    
 class BandasCreateView(CreateView):
     model = Banda
     form_class = BandasForm
@@ -181,3 +189,5 @@ class BandasDetailView(DetailView):
     template_name = 'mi_tercer_entrega_app/detalle_banda.html'
     context_object_name = 'bandas'
 
+def acercade(request):
+    return render(request, 'mi_tercer_entrega_app/acercade.html')
