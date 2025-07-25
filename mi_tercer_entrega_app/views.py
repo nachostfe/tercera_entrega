@@ -153,6 +153,7 @@ def lista_discos(request):
     discos = Disco.objects.all()
     return render(request, 'mi_tercer_entrega_app/lista_discos.html', {'discos': discos})
 
+@login_required
 def buscar_discos(request):
     if request.method == 'GET':
         titulo = request.GET.get('titulo', '')
