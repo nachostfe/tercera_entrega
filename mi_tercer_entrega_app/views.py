@@ -140,7 +140,7 @@ def crear_disco(request):
                 banda=form.cleaned_data['banda'],
                 titulo=form.cleaned_data['titulo'],
                 genero=form.cleaned_data['genero'],
-                anio=form.cleaned_data['anio'],
+                fechaLanzamiento=form.cleaned_data['fechaLanzamiento'],
                 precio=form.cleaned_data['precio']
             )
             nuevo_disco.save()

@@ -1,5 +1,6 @@
 from django.db import models
 
+from datetime import date
 # Create your models here.
 
 class Familiar(models.Model):
@@ -39,7 +40,7 @@ class Disco(models.Model):
     banda = models.CharField(max_length=100)
     titulo = models.CharField(max_length=100)
     genero = models.CharField(max_length=100)
-    anio = models.IntegerField()
+    fechaLanzamiento = models.DateField(default=date.today)
     precio=models.FloatField()
 
     def __str__(self):
@@ -57,6 +58,7 @@ class Auto(models.Model):
 class Recital(models.Model):
     banda = models.CharField(max_length=50)
     lugar = models.CharField(max_length=50)
+    fecha = models.DateField()
     ciudad = models.CharField(max_length=50)
     precio = models.FloatField()
 

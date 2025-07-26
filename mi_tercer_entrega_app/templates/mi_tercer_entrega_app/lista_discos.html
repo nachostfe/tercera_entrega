@@ -10,7 +10,7 @@
 
 <ul>
     {% for disco in discos %}
-        <li>{{ disco.banda }} - {{ disco.titulo }} ({{ disco.anio }}) - ${{ disco.precio }}</li>
+        <li>{{ disco.banda }} - {{ disco.titulo }} - ${{ disco.precio }}</li>
     {% empty %}
         <li>No se encontraron discos.</li>
     {% endfor %}

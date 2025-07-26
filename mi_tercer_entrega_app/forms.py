@@ -22,7 +22,8 @@ class DiscoForm(forms.Form):
     banda = forms.CharField(label="Banda", max_length=100)
     titulo = forms.CharField(label="Titulo", max_length=100)
     genero = forms.CharField(label="Genero", max_length=100)
-    anio = forms.IntegerField(min_value=1950, max_value=3000)
+    fechaLanzamiento = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}))
     precio = forms.FloatField()
 
 class AutoForm(forms.ModelForm):
@@ -38,4 +39,4 @@ class BandasForm(forms.ModelForm):
 class RecitalesForm(forms.ModelForm):
     class Meta:
         model = Recital
-        fields = ['banda','lugar','ciudad','precio']
+        fields = ['banda','lugar','fecha','ciudad','precio']
