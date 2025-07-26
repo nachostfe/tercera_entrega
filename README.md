@@ -20,11 +20,11 @@ El sitio está construido con Python y Django, aprovechando las herramientas mod
 
 
 ## 🛠️ Realiza las migraciones para crear la BD:
-python manage.py makemigrations
-python manage.py migrate
+- python manage.py makemigrations
+- python manage.py migrate
 
 
 ## 🛠️ Corre el servidor:
-python manage.py runserver
+- python manage.py runserver
 
 Accede a: http://127.0.0.1:8000/

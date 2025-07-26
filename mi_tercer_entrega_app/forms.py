@@ -22,7 +22,7 @@ class DiscoForm(forms.Form):
     banda = forms.CharField(label="Banda", max_length=100)
     titulo = forms.CharField(label="Titulo", max_length=100)
     genero = forms.CharField(label="Genero", max_length=100)
-    fechaLanzamiento = forms.DateField(
+    fechaLanzamiento = forms.DateField(label="Fecha de Lanzamiento", 
         widget=forms.DateInput(attrs={'type': 'date'}))
     precio = forms.FloatField()
 
