@@ -1,0 +1,17 @@
+{% extends "padre.html" %}
+
+{% block content %}
+
+<h1>Próximos Recitales</h1>
+<ul>
+  {% for recital in recitales %}
+    <li>
+      <strong>{{ recital.banda }}</strong> - {{ recital.ciudad }} ({{ recital.lugar }})<br>
+      Fecha: {{ recital.fecha }} - Precio: ${{ recital.precio }}
+    </li>
+  {% empty %}
+    <li>No hay recitales próximos.</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

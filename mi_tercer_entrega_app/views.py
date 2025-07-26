@@ -8,6 +8,7 @@ from .models import Familiar, Curso, Estudiante,Disco, Auto,Banda,Recital
 from .forms import CursoForm, EstudianteForm,DiscoForm, AutoForm,BandasForm,RecitalesForm
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 from django.http import HttpResponse
@@ -122,12 +123,18 @@ class AutoDeleteView(DeleteView):
     template_name = 'mi_tercer_entrega_app/eliminar_auto.html'
     success_url = reverse_lazy('listar-autos')
 
+
 class RecitalesCreateView(CreateView):
     model = Recital
     form_class = RecitalesForm
     template_name = 'mi_tercer_entrega_app/crear-recitales.html'
-    success_url = reverse_lazy('listar-recitales')
- 
+    success_url = reverse_lazy('lista_recitales')
+
+class RecitalListView(LoginRequiredMixin, ListView):
+    model = Recital
+    template_name = 'mi_tercer_entrega_app/lista_recitales.html'
+    context_object_name = 'recitales'
+    login_url = '/login/'
  
  
 @login_required

@@ -35,8 +35,14 @@ class BandasForm(forms.ModelForm):
     class Meta:
         model = Banda
         fields = ['nombre','aniodeformacion','pais','genero','historia','genero']
+        labels = {
+            'aniodeformacion': 'Año de formación',
+        }
         
 class RecitalesForm(forms.ModelForm):
     class Meta:
         model = Recital
         fields = ['banda','lugar','fecha','ciudad','precio']
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'}),
+        }        
