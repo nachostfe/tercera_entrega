@@ -9,7 +9,10 @@ Este proyecto nace de mi pasión por la música y la programación. Aquí vas a 
 El sitio está construido con Python y Django, aprovechando las herramientas modernas del desarrollo web para crear una experiencia simple, clara y potente.
 
 ## 🛠️ Presentación en video loom
+link 1
 https://www.loom.com/share/8a626f6e52d745509bb919fc884b3d44?sid=ddbc9778-b8b5-42b5-bfea-6db6da59c229
+link 2
+https://www.loom.com/share/8a626f6e52d745509bb919fc884b3d44?sid=af94b6a6-b722-4c57-8fe6-4713c0efbc1e
 
 ## 🛠️ Tecnologías utilizadas
 - Python 3.10+
